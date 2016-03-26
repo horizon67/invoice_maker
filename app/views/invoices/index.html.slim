@@ -1,0 +1,47 @@
+.container-fluid
+  .row
+    .col-md-10
+    .col-md-2
+      = link_to "新規", new_invoice_path, {class: "btn btn-primary"}
+table.table.table-striped.table-hover
+  thead
+    tr
+      th
+        | id
+      th
+        = Invoice.human_attribute_name(:customer)
+      th
+        = Invoice.human_attribute_name(:number)
+      th
+        = Invoice.human_attribute_name(:issue_date)
+      th
+        = Invoice.human_attribute_name(:created_at)
+      th
+        = Invoice.human_attribute_name(:updated_at)
+      th
+      th
+      th
+      th
+  tbody
+    - @invoices.each do |invoice|
+      tr
+        td
+          = link_to invoice.id, invoice_path(invoice)
+        td
+          = invoice.customer.try(:name)
+        td
+          = invoice.number
+        td
+          = invoice.issue_date
+        td
+          = invoice.created_at
+        td
+          = invoice.updated_at
+        td
+          = link_to "", invoice_path(invoice, format: :pdf), method: :get, class: "fa fa-file-pdf-o"
+        td
+          = link_to "", invoice_path(invoice), method: :get, class: "fa fa-search"
+        td
+          = link_to "", edit_invoice_path(invoice), method: :get, class: "fa fa-pencil"
+        td
+          = link_to "", invoice_path(invoice), method: :delete, class: "fa fa-trash", data: {confirm: "本当によろしいですか？"}

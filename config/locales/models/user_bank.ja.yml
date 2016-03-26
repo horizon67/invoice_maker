@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      user_bank: 銀行口座
+    attributes:
+      user_bank:
+        user: ユーザー
+        name: 名前
+        account_name: 口座名義
+        account_number: 口座番号
+        account_type: 口座種別
+        branch_name: 支店名
+        created_at: 登録日時
+        updated_at: 更新日時

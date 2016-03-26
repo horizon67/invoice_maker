@@ -1,0 +1,44 @@
+.container-fluid
+  .row
+    .col-md-10
+    .col-md-2
+      = link_to "新規", new_customer_path, {class: "btn btn-primary"}
+table.table.table-striped.table-hover
+  thead
+    tr
+      th
+        | id
+      th
+        = Customer.human_attribute_name(:name)
+      th
+        = Customer.human_attribute_name(:staff_name)
+      th
+        = Customer.human_attribute_name(:phone_number)
+      th
+        = Customer.human_attribute_name(:created_at)
+      th
+        = Customer.human_attribute_name(:updated_at)
+      th
+      th
+      th
+  tbody
+    - @customers.each do |customer|
+      tr
+        td
+          = link_to customer.id, customer_path(customer)
+        td
+          = customer.name
+        td
+          = customer.staff_name
+        td
+          = customer.phone_number
+        td
+          = customer.created_at
+        td
+          = customer.updated_at
+        td
+          = link_to "", customer_path(customer), method: :get, class: "fa fa-search"
+        td
+          = link_to "", edit_customer_path(customer), method: :get, class: "fa fa-pencil"
+        td
+          = link_to "", customer_path(customer), method: :delete, class: "fa fa-trash", data: {confirm: "本当によろしいですか？"}

@@ -1,0 +1,94 @@
+.container-fluid
+  .row
+    .col-md-10
+    .col-md-2
+      = link_to "PDF", invoice_path(@invoice, format: :pdf), {class: "btn btn-primary"}
+legend
+  = Invoice.model_name.human
+.row
+  label.col-lg-4
+    = Invoice.human_attribute_name(:user)
+  .col-lg-8
+    = @invoice.user.name
+.row
+  label.col-lg-4
+    = Invoice.human_attribute_name(:customer)
+  .col-lg-8
+    = @invoice.customer.name
+.row
+  label.col-lg-4
+    = Invoice.human_attribute_name(:bank)
+  .col-lg-8
+    = @invoice.user_bank.name
+.row
+  label.col-lg-4
+    = Invoice.human_attribute_name(:number)
+  .col-lg-8
+    = @invoice.number
+.row
+  label.col-lg-4
+    = Invoice.human_attribute_name(:issue_date)
+  .col-lg-8
+    = @invoice.issue_date
+.row
+  label.col-lg-4
+    = Invoice.human_attribute_name(:payment_deadline)
+  .col-lg-8
+    = @invoice.payment_deadline
+.row
+  label.col-lg-4
+    = InvoiceDetail.model_name.human
+  .col-lg-8
+    - @invoice.details.each do |detail|
+      .row
+        label.col-lg-4
+          = InvoiceDetail.human_attribute_name(:name)
+        .col-lg-8
+          = detail.name
+      .row
+        label.col-lg-4
+          = InvoiceDetail.human_attribute_name(:unit_price)
+        .col-lg-8
+          = number_to_currency(detail.unit_price)
+      .row
+        label.col-lg-4
+          = InvoiceDetail.human_attribute_name(:quantity)
+        .col-lg-8
+          = detail.quantity
+      .row
+        label.col-lg-4
+          = InvoiceDetail.human_attribute_name(:price)
+        .col-lg-8
+          = number_to_currency(detail.price)
+      br
+
+.row
+  label.col-lg-4
+    = Invoice.human_attribute_name(:subtotal)
+  .col-lg-8
+    = number_to_currency(@invoice.subtotal)
+.row
+  label.col-lg-4
+    | 消費税
+  .col-lg-8
+    = @invoice.including_tax? ? "込" : number_to_currency(invoice.subtotal * ApplicationSettings.tax_rate / 100)
+.row
+  label.col-lg-4
+    = Invoice.human_attribute_name(:total)
+  .col-lg-8
+    = number_to_currency(@invoice.total)
+.row
+  label.col-lg-4
+    = Invoice.human_attribute_name(:description)
+  .col-lg-8
+    = @invoice.br(:description)
+.row
+  label.col-lg-4
+    = Invoice.human_attribute_name(:created_at)
+  .col-lg-8
+    = @invoice.created_at
+.row
+  label.col-lg-4
+    = Invoice.human_attribute_name(:updated_at)
+  .col-lg-8
+    = @invoice.updated_at

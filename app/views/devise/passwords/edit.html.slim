@@ -1,0 +1,23 @@
+= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "form-horizontal" }) do |f|
+  = devise_error_messages!
+  = f.hidden_field :reset_password_token
+  fieldset
+    legend
+      | パスワード変更
+    .form-group
+      label.col-lg-3.control-label
+        = f.label :password, "新しいパスワード"
+      .col-lg-9
+        = f.password_field :password, autofocus: true, autocomplete: "off", class: "form-control"
+    .form-group
+      label.col-lg-3.control-label
+        = f.label :password_confirmation, "新しいパスワード確認"
+      .col-lg-9
+        = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
+    .form-group
+      .col-lg-4
+      .col-lg-4
+        = render "devise/shared/links"
+      .col-lg-4
+        .actions
+          = f.submit "パスワード変更", class: "btn btn-primary"

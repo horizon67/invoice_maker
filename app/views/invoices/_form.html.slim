@@ -1,0 +1,79 @@
+/= javascript_include_tag "invoices"
+= nested_form_for @invoice, html: {class: "form-horizontal"} do |f|
+  - if @invoice.errors.present?
+    .panel.panel-danger
+      .panel-heading
+        h3.panel-title
+          | #{@invoice.errors.size}件のエラーがあります
+      .panel-body
+        - @invoice.errors.full_messages.each do |msg| 
+          = msg
+          br
+  fieldset
+    legend
+      = Invoice.model_name.human
+    .form-group
+      label.col-lg-2.control-label
+        = Invoice.human_attribute_name(:customer)
+        | ※
+      .col-lg-10
+        = f.collection_select(:customer_id, Customer.where(user: current_user), :id, :name)
+    .form-group
+      label.col-lg-2.control-label
+        = Invoice.human_attribute_name(:bank)
+        | ※
+      .col-lg-10
+        = f.collection_select(:user_bank_id, UserBank.where(user: current_user), :id, :name)
+    .form-group
+      label.col-lg-2.control-label
+        = Invoice.human_attribute_name(:number)
+      .col-lg-10
+        = f.text_field :number, class: "form-control", placeholder: "2016010101"
+    .form-group
+      label.col-lg-2.control-label
+        = Invoice.human_attribute_name(:issue_date)
+      .col-lg-10
+        = f.text_field :issue_date, class: 'datepicker form-control'
+    .form-group
+      label.col-lg-2.control-label
+        = Invoice.human_attribute_name(:payment_deadline)
+      .col-lg-10
+        = f.text_field :payment_deadline, class: "datepicker form-control"
+    .form-group
+      label.col-lg-2.control-label
+        = Invoice.human_attribute_name(:including_tax)
+      .col-lg-1
+        = f.check_box :including_tax, class: "checkbox form-control"
+    .form-group
+      label.col-lg-2.control-label
+        = Invoice.human_attribute_name(:description)
+      .col-lg-10
+        = f.text_area :description, class: "form-control"
+    .form-group
+      label.col-lg-2.control-label
+        = InvoiceDetail.model_name.human
+      .col-lg-10
+        = f.fields_for :details do |d|
+          .form-group
+            label.col-lg-2.control-label
+              = InvoiceDetail.human_attribute_name(:name)
+            .col-lg-10
+              = d.text_field :name, class: "form-control", placeholder: "サーバー構築"
+          .form-group
+            label.col-lg-2.control-label
+              = InvoiceDetail.human_attribute_name(:unit_price)
+            .col-lg-10
+              = d.text_field :unit_price, class: "form-control", placeholder: "300000"
+          .form-group
+            label.col-lg-2.control-label
+              = InvoiceDetail.human_attribute_name(:quantity)
+            .col-lg-10
+              = d.text_field :quantity, class: "form-control", placeholder: "3"
+          = d.link_to_remove "削除"
+        = f.link_to_add "#{InvoiceDetail.model_name.human}を追加", :details
+    .form-group
+      .col-lg-2
+      .col-lg-2
+        = link_to "Cancel", :back, class: "btn btn-default"
+      .col-lg-6
+        = f.submit "送信する", class: "btn btn-primary", data: { disable_with: "送信中..."}

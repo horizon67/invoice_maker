@@ -1,0 +1,28 @@
+= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-horizontal"}) do |f|
+  fieldset
+    legend
+      | ログイン
+    .form-group
+      label.col-lg-2.control-label
+        = f.label :email
+      .col-lg-10
+        = f.email_field :email, autofocus: true, class: "form-control"
+    .form-group
+      label.col-lg-2.control-label
+        = f.label :password
+      .col-lg-10
+        = f.password_field :password, autocomplete: "off", class: "form-control"
+      - if devise_mapping.rememberable?
+        .form-group
+          label.col-lg-2.control-label
+            = f.label :remember_me
+          .col-lg-1
+            = f.check_box :remember_me, class: "checkbox form-control"
+    .form-group
+      .col-lg-4
+      .col-lg-4
+        = render "devise/shared/links"
+      .col-lg-4
+        .actions
+          = f.submit "ログイン", class: "btn btn-primary"
+          br

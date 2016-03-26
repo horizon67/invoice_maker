@@ -1,0 +1,49 @@
+= form_for @user_bank, html: {class: "form-horizontal"} do |f|
+  - if @user_bank.errors.present?
+    .panel.panel-danger
+      .panel-heading
+        h3.panel-title
+          | #{@user_bank.errors.size}件のエラーがあります
+      .panel-body
+        - @user_bank.errors.full_messages.each do |msg| 
+          = msg
+          br
+  fieldset
+    legend
+      = UserBank.model_name.human
+    .form-group
+      label.col-lg-2.control-label
+        = UserBank.human_attribute_name(:name)
+        | ※
+      .col-lg-10
+        = f.text_field :name, class: "form-control", placeholder: "三菱東京UFJ銀行"
+    .form-group
+      label.col-lg-2.control-label
+        = UserBank.human_attribute_name(:account_name)
+        | ※
+      .col-lg-10
+        = f.text_field :account_name, class: "form-control", placeholder: "スズキ　タロウ"
+    .form-group
+      label.col-lg-2.control-label
+        = UserBank.human_attribute_name(:account_number)
+        | ※
+      .col-lg-10
+        = f.text_field :account_number, class: "form-control", placeholder: "123456789"
+    .form-group
+      label.col-lg-2.control-label
+        = UserBank.human_attribute_name(:account_type)
+        | ※
+      .col-lg-10
+        = f.select :account_type, UserBank::ACCOUNT_TYPE_MAP, class: "form-control"
+    .form-group
+      label.col-lg-2.control-label
+        = UserBank.human_attribute_name(:branch_name)
+        | ※
+      .col-lg-10
+        = f.text_field :branch_name, class: "form-control", placeholder: "神田支店"
+    .form-group
+      .col-lg-2
+      .col-lg-2
+        = link_to "Cancel", :back, class: "btn btn-default"
+      .col-lg-6
+        = f.submit "送信する", class: "btn btn-primary", data: { disable_with: "送信中..."}

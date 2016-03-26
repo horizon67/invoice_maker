@@ -1,0 +1,50 @@
+= form_for @customer, html: {class: "form-horizontal"} do |f|
+  - if @customer.errors.present?
+    .panel.panel-danger
+      .panel-heading
+        h3.panel-title
+          | #{@customer.errors.size}件のエラーがあります
+      .panel-body
+        - @customer.errors.full_messages.each do |msg| 
+          = msg
+          br
+  fieldset
+    legend
+      = Customer.model_name.human
+    .form-group
+      label.col-lg-2.control-label
+        = Customer.human_attribute_name(:name)
+        | ※
+      .col-lg-10
+        = f.text_field :name, class: "form-control", placeholder: "株式会社鈴木工業"
+    .form-group
+      label.col-lg-2.control-label
+        = Customer.human_attribute_name(:zip_code)
+      .col-lg-10
+        = f.text_field :zip_code, class: "form-control", placeholder: "123-1234"
+    .form-group
+      label.col-lg-2.control-label
+        = Customer.human_attribute_name(:address)
+      .col-lg-10
+        = f.text_field :address, class: "form-control", placeholder: "神奈川県茅ヶ崎市北海岸北５−２５−１ 〜〜ハイツ"
+    .form-group
+      label.col-lg-2.control-label
+        = Customer.human_attribute_name(:phone_number)
+      .col-lg-10
+        = f.text_field :phone_number, class: "form-control", placeholder: "03-1234-9999"
+    .form-group
+      label.col-lg-2.control-label
+        = Customer.human_attribute_name(:staff_name)
+      .col-lg-10
+        = f.text_field :staff_name, class: "form-control", placeholder: "担当太郎"
+    .form-group
+      label.col-lg-2.control-label
+        = Customer.human_attribute_name(:staff_phone_number)
+      .col-lg-10
+        = f.text_field :staff_phone_number, class: "form-control", placeholder: "000-1234-9999"
+    .form-group
+      .col-lg-2
+      .col-lg-2
+        = link_to "Cancel", :back, class: "btn btn-default"
+      .col-lg-6
+        = f.submit "送信する", class: "btn btn-primary", data: { disable_with: "送信中..." }

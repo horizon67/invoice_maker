@@ -1,0 +1,26 @@
+ja:
+  activerecord:
+    models:
+      invoice: 請求書
+    attributes:
+      invoice:
+        user: ユーザー
+        customer: 顧客
+        customer_id: 顧客
+        bank: 銀行
+        user_bank_id: 銀行
+        number: 請求書番号
+        issue_date: 発行日
+        payment_deadline: 支払期日
+        including_tax: 内税
+        subtotal: 小計
+        total: 合計
+        description: 備考
+        created_at: 登録日時
+        updated_at: 更新日時
+        details: 請求詳細
+      invoice/details:
+        name: 品名
+        unit_price: 単価
+        quantity: 数量
+        price: 金額

@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      invoice_detail: 請求詳細
+    attributes:
+      invoice_detail:
+        name: 品名
+        unit_price: 単価
+        quantity: 数量
+        price: 金額
+        created_at: 登録日時
+        updated_at: 更新日時

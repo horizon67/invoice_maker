@@ -1,0 +1,42 @@
+legend
+  = UserBank.model_name.human
+.row
+  label.col-lg-4
+    = UserBank.human_attribute_name(:user)
+  .col-lg-8
+    = @user_bank.user.name
+.row
+  label.col-lg-4
+    = UserBank.human_attribute_name(:name)
+  .col-lg-8
+    = @user_bank.name
+.row
+  label.col-lg-4
+    = UserBank.human_attribute_name(:account_name)
+  .col-lg-8
+    = @user_bank.account_name
+.row
+  label.col-lg-4
+    = UserBank.human_attribute_name(:account_number)
+  .col-lg-8
+    = @user_bank.account_number
+.row
+  label.col-lg-4
+    = UserBank.human_attribute_name(:account_type)
+  .col-lg-8
+    = @user_bank.account_type
+.row
+  label.col-lg-4
+    = UserBank.human_attribute_name(:branch_name)
+  .col-lg-8
+    = @user_bank.branch_name
+.row
+  label.col-lg-4
+    = UserBank.human_attribute_name(:created_at)
+  .col-lg-8
+    = @user_bank.created_at
+.row
+  label.col-lg-4
+    = UserBank.human_attribute_name(:updated_at)
+  .col-lg-8
+    = @user_bank.updated_at

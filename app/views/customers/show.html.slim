@@ -1,0 +1,43 @@
+fieldset
+  legend
+    = Customer.model_name.human
+  .row
+    label.col-lg-4
+      = Customer.human_attribute_name(:name)
+    .col-lg-8
+      = @customer.name
+  .row
+    label.col-lg-4
+      = Customer.human_attribute_name(:zip_code)
+    .col-lg-8
+      = @customer.zip_code
+  .row
+    label.col-lg-4
+      = Customer.human_attribute_name(:address)
+    .col-lg-8
+      = @customer.address
+  .row
+    label.col-lg-4
+      = Customer.human_attribute_name(:phone_number)
+    .col-lg-8
+      = @customer.phone_number
+  .row
+    label.col-lg-4
+      = Customer.human_attribute_name(:staff_name)
+    .col-lg-8
+      = @customer.staff_name
+  .row
+    label.col-lg-4
+      = Customer.human_attribute_name(:staff_phone_number)
+    .col-lg-8
+      = @customer.staff_phone_number
+  .row
+    label.col-lg-4
+      = Customer.human_attribute_name(:created_at)
+    .col-lg-8
+      = @customer.created_at
+  .row
+    label.col-lg-4
+      = Customer.human_attribute_name(:updated_at)
+    .col-lg-8
+      = @customer.updated_at

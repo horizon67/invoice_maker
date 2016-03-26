@@ -1,0 +1,12 @@
+defaults: &defaults
+  service_domain_prefix: "http://"
+  service_domain: "localhost:3000"
+  tax_rate: 8
+development:
+  <<: *defaults
+test:
+  <<: *defaults
+staging:
+  <<: *defaults
+production:
+  <<: *defaults
