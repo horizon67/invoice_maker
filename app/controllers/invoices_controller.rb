@@ -3,12 +3,13 @@ class InvoicesController < ApplicationController
 
   # GET /invoices
   def index
-    @invoices = Invoice.all.try(:decorate)
+    @invoices = current_user.invoices.order_default.try(:decorate)
   end
 
   # GET /invoices/:id
   def show
-    @invoice = Invoice.find(params[:id]).try(:decorate)
+    @invoice = Invoice.where(id: params[:id], user: current_user).first.try(:decorate)
+    render_404 and return unless @invoice
     respond_to do |format|
       format.html
       format.pdf do
@@ -35,12 +36,15 @@ class InvoicesController < ApplicationController
 
   # GET /invoices/:id/edit
   def edit
-    @invoice = Invoice.find(params[:id]).decorate
+    @invoice = Invoice.where(id: params[:id], user: current_user).first.try(:decorate)
+    render_404 and return unless @invoice
   end
 
   # PATCH /invoices/:id
   def update
-    @invoice = Invoice.find(params[:id]).decorate
+    @invoice = Invoice.where(id: params[:id], user: current_user).first.try(:decorate)
+    render_404 and return unless @invoice
+
     unless @invoice.update(invoice_params)
       render 'edit' and return
     end
@@ -49,7 +53,8 @@ class InvoicesController < ApplicationController
 
   # DELETE /invoices/:id
   def destroy
-    @invoice = Invoice.find(params[:id]).decorate
+    @invoice = Invoice.where(id: params[:id], user: current_user).first.try(:decorate)
+    render_404 and return unless @invoice
     @invoice.destroy
     redirect_to invoices_path, flash: {notice: "#{Invoice.model_name.human}を削除しました"}
   end

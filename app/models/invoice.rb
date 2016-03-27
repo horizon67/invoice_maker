@@ -9,6 +9,8 @@ class Invoice < ActiveRecord::Base
     Time.now.strftime("%Y%m%d%H%M%S")
   end
 
+  scope :order_default, ->{ order('id DESC') }
+
   validates :user,
     presence: true
   validates :customer,

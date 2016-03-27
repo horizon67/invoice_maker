@@ -3,7 +3,7 @@ class UserBanksController < ApplicationController
 
   # GET /user_banks
   def index
-    @user_banks = current_user.banks.try(:decorate)
+    @user_banks = current_user.banks.order_default.try(:decorate)
   end
 
   # GET /user_banks/:id

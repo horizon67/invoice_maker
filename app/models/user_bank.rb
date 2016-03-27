@@ -2,6 +2,7 @@ class UserBank < ActiveRecord::Base
   belongs_to :user
   has_many :invoices
   ACCOUNT_TYPE_MAP = {"普通" => 0, "当座" => 1}
+  scope :order_default, ->{ order('id DESC') }
 
   validates :name,
     presence: true,

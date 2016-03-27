@@ -17,13 +17,13 @@
         = Invoice.human_attribute_name(:customer)
         | ※
       .col-lg-10
-        = f.collection_select(:customer_id, Customer.where(user: current_user), :id, :name)
+        = f.collection_select(:customer_id, Customer.where(user: current_user), :id, :name, {} ,{:class => "form-control"})
     .form-group
       label.col-lg-2.control-label
         = Invoice.human_attribute_name(:bank)
         | ※
       .col-lg-10
-        = f.collection_select(:user_bank_id, UserBank.where(user: current_user), :id, :name)
+        = f.collection_select(:user_bank_id, UserBank.where(user: current_user), :id, :name, {} ,{:class => "form-control"})
     .form-group
       label.col-lg-2.control-label
         = Invoice.human_attribute_name(:number)

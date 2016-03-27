@@ -3,7 +3,7 @@ class CustomersController < ApplicationController
 
   # GET /customers
   def index
-    @customers = Customer.where(user: current_user).try(:decorate)
+    @customers = current_user.customers.order_default.try(:decorate)
   end
 
   # GET /customers/new
@@ -23,17 +23,20 @@ class CustomersController < ApplicationController
 
   # GET /customers/:id
   def show
-    @customer = Customer.find(params[:id]).try(:decorate)
+    @customer = Customer.where(id: params[:id], user: current_user).first.try(:decorate)
+    render_404 and return unless @customer
   end
 
   # GET /customers/:id
   def edit
-    @customer = Customer.find(params[:id]).decorate
+    @customer = Customer.where(id: params[:id], user: current_user).first.try(:decorate)
+    render_404 and return unless @customer
   end
 
   # PATCH /customers/:id
   def update
-    @customer = Customer.find(params[:id]).decorate
+    @customer = Customer.where(id: params[:id], user: current_user).first.try(:decorate)
+    render_404 and return unless @customer
     unless @customer.update(customer_params)
       render 'edit' and return
     end
@@ -42,7 +45,8 @@ class CustomersController < ApplicationController
 
   # DELETE /customers/:id
   def destroy
-    @customer = Customer.find(params[:id]).decorate
+    @customer = Customer.where(id: params[:id], user: current_user).first.try(:decorate)
+    render_404 and return unless @customer
     @customer.destroy
     redirect_to customers_path, flash: {notice: "#{Customer.model_name.human}を削除しました"}
   end

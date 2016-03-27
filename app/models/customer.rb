@@ -2,6 +2,8 @@ class Customer < ActiveRecord::Base
   belongs_to :user
   has_many :invoices, dependent: :destroy
 
+  scope :order_default, ->{ order('id DESC') }
+
   validates :name,
     presence: true,
     length: { :maximum => 100 }
