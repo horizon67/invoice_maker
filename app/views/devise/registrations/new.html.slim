@@ -10,6 +10,30 @@
         = f.email_field :email, autofocus: true, class: "form-control"
     .form-group
       label.col-lg-2.control-label
+        = User.human_attribute_name(:name)
+        | ※
+      .col-lg-10
+        = f.text_field :name, class: "form-control", placeholder: "鈴木 太郎"
+    .form-group
+      label.col-lg-2.control-label
+        = User.human_attribute_name(:zip_code)
+        | ※
+      .col-lg-10
+        = f.text_field :zip_code, class: "form-control", placeholder: "123-1234"
+    .form-group
+      label.col-lg-2.control-label
+        = User.human_attribute_name(:address)
+        | ※
+      .col-lg-10
+        = f.text_field :address, class: "form-control", placeholder: "神奈川県茅ヶ崎市北海岸北５−２５−１ 〜〜ハイツ"
+    .form-group
+      label.col-lg-2.control-label
+        = User.human_attribute_name(:phone_number)
+        | ※
+      .col-lg-10
+        = f.text_field :phone_number, class: "form-control", placeholder: "03-1234-9999"
+    .form-group
+      label.col-lg-2.control-label
         = f.label :password
       .col-lg-10
         = f.password_field :password, autocomplete: "off", class: "form-control"

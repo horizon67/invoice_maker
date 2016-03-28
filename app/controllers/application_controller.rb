@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   if !Rails.env.development?
     rescue_from Exception,                        with: :render_500
@@ -36,5 +37,11 @@ class ApplicationController < ActionController::Base
       render file: Rails.root.join('public/500.html'), status: 404, layout: false, content_type: 'text/html'
       #render template: 'errors/error_500', formats: format, status: 500, layout: 'application', content_type: 'text/html'
     end
+  end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << [:name, :zip_code, :address, :phone_number]
   end
 end

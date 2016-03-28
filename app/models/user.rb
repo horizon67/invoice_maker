@@ -9,12 +9,16 @@ class User < ActiveRecord::Base
   has_many :customers, :dependent => :destroy
 
   validates :name,
+    presence: true,
     length: { :maximum => 100 }
   validates :zip_code,
+    presence: true,
     allow_blank: true,
     format: { with: /\A\d{3}\-?\d{4}\z/ }
   validates :address,
+    presence: true,
     length: { :maximum => 100 }
   validates :phone_number,
+    presence: true,
     length: { :maximum => 100 }
 end
