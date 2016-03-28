@@ -19,4 +19,5 @@ db/schema.rb
 .project
 .DS_Store
 Thumbs.db
+public/uploads
 tags
