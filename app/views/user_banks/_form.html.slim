@@ -34,7 +34,7 @@
         = UserBank.human_attribute_name(:account_type)
         | ※
       .col-lg-10
-        = f.select :account_type, UserBank::ACCOUNT_TYPE_MAP, class: "form-control"
+        = f.select :account_type, UserBank::ACCOUNT_TYPE_MAP, {} ,{:class => "form-control"}
     .form-group
       label.col-lg-2.control-label
         = UserBank.human_attribute_name(:branch_name)
