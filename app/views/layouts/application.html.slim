@@ -50,6 +50,6 @@ html(lang="en")
       | Javascripts
       | \==================================================
     /! Placed at the end of the document so the pages load faster
-    = javascript_include_tag :application, "nested_form"
+    = javascript_include_tag :application
     = javascript_include_tag "cosmo"
     = yield(:page_javascript) if content_for?(:page_javascript)
