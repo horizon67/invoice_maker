@@ -12,5 +12,6 @@ ja:
         zip_code: 郵便番号
         address: 住所
         phone_number: 電話番号
+        signature: 印鑑
         created_at: 登録日時
         updated_at: 更新日時

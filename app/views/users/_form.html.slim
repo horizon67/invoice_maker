@@ -36,6 +36,13 @@
       .col-lg-10
         = f.text_field :phone_number, class: "form-control", placeholder: "03-1234-9999"
     .form-group
+      label.col-lg-2.control-label
+        = User.human_attribute_name(:signature)
+      .col-lg-10
+        = f.file_field :signature
+        = f.hidden_field :signature_cache
+        = image_tag @user.signature_url if @user.signature.present?
+    .form-group
       .col-lg-2
       .col-lg-2
         = link_to "Cancel", :back, class: "btn btn-default"

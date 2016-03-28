@@ -77,6 +77,7 @@ class InvoicesController < ApplicationController
     report.page.item(:customer_name).value(invoice.customer.name)
     report.page.item(:invoice_issue_date).value(invoice.issue_date.strftime("%Y/%m/%d"))
     report.page.item(:invoice_number).value(invoice.number)
+    report.page.item(:signature).src("public/#{invoice.user.signature_url}")
     report.page.item(:user_name).value(invoice.user.name)
     report.page.item(:user_zip_code).value(invoice.user.zip_code)
     report.page.item(:user_address).value(invoice.user.address)
