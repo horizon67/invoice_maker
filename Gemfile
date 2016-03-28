@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-gem "mysql2"
+gem "mysql2", '~> 0.4.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.0.5'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 #gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -32,10 +32,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'thinreports'
+gem 'thinreports', '~> 0.8.1'
 
 gem 'devise', '~> 3.5.3'
-gem 'slim-rails'
+gem 'slim-rails', '~> 3.0.1'
 gem 'less-rails', '~> 2.7.1'
 gem 'twitter-bootswatch-rails', '~> 3.3.4.0'
 gem 'twitter-bootswatch-rails-helpers', '~> 3.3.2.0'
@@ -46,6 +46,7 @@ gem "settingslogic", '~> 2.0.9'
 gem "default_value_for", '~> 3.0.1'
 gem 'rails-i18n', '~> 4.0.8'
 gem 'jquery-ui-rails', '~> 5.0.5'
+gem 'carrierwave', '~> 0.10.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
