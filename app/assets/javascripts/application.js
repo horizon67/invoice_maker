@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require cosmo/loader
 //= require cosmo/bootswatch
 //= require jquery_nested_form

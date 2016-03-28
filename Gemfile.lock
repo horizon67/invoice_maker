@@ -298,8 +298,6 @@ GEM
     tilt (2.0.1)
     timecop (0.8.0)
     ttfunk (1.4.0)
-    turbolinks (2.5.3)
-      coffee-rails
     twitter-bootswatch-rails (3.3.4.0)
       execjs (~> 2.3, >= 2.3.0)
       less-rails (~> 2.4)
@@ -367,7 +365,6 @@ DEPENDENCIES
   thin
   thinreports
   timecop
-  turbolinks
   twitter-bootswatch-rails (~> 3.3.4.0)
   twitter-bootswatch-rails-fontawesome (~> 4.3.0.0)
   twitter-bootswatch-rails-helpers (~> 3.3.2.0)
